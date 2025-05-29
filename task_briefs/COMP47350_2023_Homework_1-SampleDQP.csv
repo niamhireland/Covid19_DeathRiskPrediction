@@ -1,0 +1,20 @@
+Feature,FeatureType,Data Quality Issue,Handling Strategy
+case_month,datetime,No data quality issues,Keep as is. Can be used to derive new features such as seasons.
+case_onset_interval,int64,"Large amount of null values (57%), Failure of Logical integrity checks (negative values)",Drop column as this feature has little effect on target outcome
+case_positive_specimen_interval,int64,"Large amount of null values (47%), Failure of Logical integrity checks (negative values)",Drop column as this feature has little effect on target outcome
+state_fips_code,category,1 null value,"Unique identifier for state. Check if possible to fill value using res_state.  If not, drop row as it is only 1 row"
+res_state,category,1 null value,"Drop column as it is like a duplicate feature to state_fips_code. For later readability, can keep a dictionary mapping state code to state name."
+county_fips_code,category,6% null values,"Unique identified for county. Check if possible to fill null value using res_county (eg res_county is defined but county_fips_code is null). Convert null to missing, and take missing values into account when analysing data. Could be used to create more useful features (e.g. red vs blue political inclination, urban vs rural area)."
+res_county,category,10% null values; lower cardinality than county_fips_code,Drop column as it is like a duplicate feature to county_fips_code and it is not a unique identifier (eg county with same name in different states).
+age_group,category,0.9% missing/unknown/null values,"Convert unknown and null to missing, and take missing values into account when analysing data"
+sex,category,2.4% null/missing/unknown values,"Convert unknown and null to missing, and take missing values into account when analysing data"
+race,category,24% null/missing/unknown values,"Convert unknown and null to missing, and take missing values into account when analysing data"
+ethnicity,category,31.5% null/missing/unknown values,"Convert unknown and null to missing, and take missing values into account when analysing data"
+process,category,92% missing/unknown values,Drop column as this feature has little effect on target outcome and has most values missing.
+exposure_yn,category,90% missing/unknown values,Drop column as this feature has little effect on target outcome and has most values missing.
+current_status,category,No data quality issues,Keep as is
+symptom_status,category,53% missing/unknown values,Drop column as this feature has little effect on target outcome and is missing >50% of values
+hosp_yn,category,"33% missing/unknown/null values, 2 rows failed Logical Intergrity Check (hospital_yn=No and icu_yn=Yes)","Convert unknown and null to missing, and take missing values into account when analysing data"
+icu_yn,category,91% missing/unknown values,"Convert unknown and null to missing, and take missing values into account when analysing data"
+underlying_conditions_yn,category,91% null values,"Convert null to missing, and take missing values into account when analysing data"
+death_yn,category,No data quality issues,Keep as is
