@@ -8,14 +8,14 @@ This project was completed when I studied Data Analytics during my MSc. The obje
 
 The task was divided into two main stages, with one notebook corresponding to each:
 
-## 🔍 Data Understanding & Preparation
+### 🔍 Data Understanding & Preparation
 I was provided with anonymised patient records containing demographic, clinical, and outcome information. From this, I:
 + 📊 Produced a **data quality report**
 + 🧹 Outlined a **systematic data cleaning** and transformation plan
 + 🧠 Performed **exploratory feature analysis**
 + 🧩 Created **domain-informed features** for predictive modelling
 
-## 🤖 Model Training & Evaluation
+### 🤖 Model Training & Evaluation
 Using the cleaned dataset, I trained multiple models to identify high-risk cases:
 
 + 🧪  Trained **Logistic Regression**, **Linear Regression**, and **Random Forest** models
